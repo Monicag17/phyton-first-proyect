@@ -1,14 +1,17 @@
 # phyton-first-proyect
 
-string_var = "Hola clase"
-interger_var = 123
-float_var = 123.24
+string_var1 = "Bienvenidos"
 
-print(string_var)
-print(type(float_var))
 
-print(interger_var)
-print(type(float_var))
+interger_var1 = 123
+interger_var2 = 255
 
-print(float_var)
-print(type(float_var))
+float_var1 = 123.24
+float_var2 = 830.7
+
+suma_entero = interger_var1+interger_var2
+suma_decimal = float_var1+float_var2
+
+print (suma_entero)
+print (suma_decimal)
+print (string_var1 + " a su clase de programación")
