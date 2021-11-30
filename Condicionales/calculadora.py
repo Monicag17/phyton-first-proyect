@@ -37,8 +37,11 @@ elif operacion == 4:
     numero1 = float(input())
     print('Por favor, digite el segundo número (Divisor)')
     numero2 = float(input())
-    divi = numero1 / numero2
-    print(f'El resultado de la división de los dos números es: {divi} ')
+    if numero2 == 0:
+        print('No se puede dividir en 0, el resultado es indeterminado')
+    else:
+        divi = numero1 / numero2
+        print(f'El resultado de la división de los dos números es: {divi} ')
 
 else:
     print('El número no está entre las opciones del menú, no se puede realizar ninguna operación')
