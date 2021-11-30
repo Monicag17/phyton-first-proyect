@@ -1,47 +1,66 @@
 # Código que suma, resta, multiplica o divide dos números digitados por el usuario
 
 
-print('Calculadora')
+def mensaje_bienvenida():
+    print('Calculadora')
+    print('Bienevenido Este programa realiza las operaciones básicas de una calculadora')
 
-print('Menú de opciones, por favor digite la operación que desea')
-print('1. Suma    2. Resta    3. Multiplicación   4. División')
 
-operacion = int(input())
+def menu_opciones():
+    print('Menú de opciones, por favor digite la operación que desea')
+    print('1. Suma    2. Resta    3. Multiplicación   4. División 5. Finalizar programa  ')
+    return int(input())
+
+
+def numero_operacion():
+    print('Por favor digite el número para la operación: ')
+    return float(input())
+
+
+def suma_numeros(numero1, numero2):
+    print(f' El resultado de la suma es: {numero1 + numero2}')
+
+
+def resta_numeros(numero1, numero2):
+    print(f'El resultado de la resta es: {numero1 - numero2}')
+
+
+def multi_numeros(numero1, numero2):
+    print(f'El resultado de la multiplicación es: {numero1 * numero2}')
+
+
+def divi0_numeros(numero2):
+    print(f'No se puede dividir en 0, el resultado es indeterminado')
+
+
+def divi_numeros(numero1, numero2):
+    print(f'EL resultado de la división es: {numero1 / numero2}')
+
+
+def finalizar_programa():
+    print('Fin del programa')
+
+
+mensaje_bienvenida()
+operacion = menu_opciones()
+numero1 = numero_operacion()
+numero2 = numero_operacion()
 
 if operacion == 1:
-    print ('La operación que eligió fue suma, por favor digite el primer número a sumar')
-    numero1 = float(input())
-    print ('Por favor, digite el segundo número ')
-    numero2 = float(input())
-    suma = numero1 + numero2
-    print (f'El resultado de la suma de los dos números es: {suma} ')
+    suma_numeros(numero1, numero2)
+
 
 elif operacion == 2:
-    print('La operación que eligió fue resta, por favor digite el primer número a restar (Minuendo)')
-    numero1 = float(input())
-    print('Por favor, digite el segundo número (Sustraendo)')
-    numero2 = float(input())
-    resta = numero1 - numero2
-    print(f'El resultado de la resta de los dos números es: {resta} ')
+    resta_numeros(numero1, numero2)
 
 elif operacion == 3:
-    print('La operación que eligió fue multiplicación, por favor digite el primer número a multiplicar')
-    numero1 = float(input())
-    print('Por favor, digite el segundo número ')
-    numero2 = float(input())
-    multi = numero1 * numero2
-    print(f'El resultado de la multiplicacion de los dos números es: {multi} ')
+    multi_numeros(numero1, numero2)
 
 elif operacion == 4:
-    print('La operación que eligió fue división, por favor digite el primer número a dividir (Dividendo)')
-    numero1 = float(input())
-    print('Por favor, digite el segundo número (Divisor)')
-    numero2 = float(input())
     if numero2 == 0:
-        print('No se puede dividir en 0, el resultado es indeterminado')
+        divi0_numeros(numero2)
     else:
-        divi = numero1 / numero2
-        print(f'El resultado de la división de los dos números es: {divi} ')
+        divi_numeros(numero1, numero2)
 
 else:
-    print('El número no está entre las opciones del menú, no se puede realizar ninguna operación')
+    finalizar_programa()
