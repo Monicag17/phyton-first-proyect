@@ -86,7 +86,14 @@ class Controlador:
             self.vista.accion_correcta(e)
 
     def buscar_contacto(self):
-        pass
+        resultados = []
+        nombre_contacto = self.vista.buscar_contacto()
+        for contacto in self.contactos:
+            if contacto.nombre == nombre_contacto:
+                resultados.append(contacto)
+                break
+        self.vista.imprimir_resultados(resultados)
+
 
     def agregar_telefono(self):
         pass

@@ -38,6 +38,18 @@ class Vista:
     def accion_incorrecta(self):
         print("Accion no realizada")
 
+    def buscar_contacto(self):
+        return str(input("Digite el nombre del contacto que desea obtener  "))
+
+    def imprimir_resultados(self, contactos):
+        for contacto in contactos:
+            print(contacto.exportar())
+        self.espera()
+
+    def espera(self):
+        input("Enter para continuar")
+
+
     def salir_programa(self):
         print("Hasta pronto, FIN DEL PROGRAMA")
 
