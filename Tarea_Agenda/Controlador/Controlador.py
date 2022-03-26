@@ -1,6 +1,7 @@
 from Modelo.Contacto import Contacto
 import json
 from Vista.Vista import Vista
+from datetime import date
 
 
 class Controlador:
@@ -10,9 +11,10 @@ class Controlador:
         self.nombre_contacto = ""
         self.vista = Vista()
         self.contactos = []
+        self.telefono = []
 
     def opciones(self):
-        while self.opcion_seleccionada != 6:
+        while self.opcion_seleccionada != 10:
             self.opcion_seleccionada = self.vista.seleccion_menu()
 
             if self.opcion_seleccionada == 1:
@@ -31,7 +33,7 @@ class Controlador:
                 self.buscar_contacto()
 
             if self.opcion_seleccionada == 6:
-                self.agregar_telefono()
+                self.agregar_numero()
 
             if self.opcion_seleccionada == 7:
                 self.crear_grupo()
@@ -49,6 +51,9 @@ class Controlador:
         contacto_nuevo = self.vista.datos_contacto()
         self.contactos.append(contacto_nuevo)
         self.vista.contacto_creado_correctamente()
+
+    def agregar_numero(self):
+        pass
 
     def exportar_contacto(self):
         nombre_carpeta = self.vista.nombre_de_carpeta()
@@ -95,17 +100,12 @@ class Controlador:
         self.vista.imprimir_resultados(resultados)
 
 
-    def agregar_telefono(self):
-        pass
-
     def crear_grupo(self):
-        pass
+       pass
 
     def generar_copiaseguridad(self):
         pass
 
-    def cumple_contactos(self):
-        pass
 
     def salir_del_programa(self):
         self.vista.salir_programa()

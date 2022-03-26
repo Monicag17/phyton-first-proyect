@@ -10,7 +10,7 @@ class Vista:
         print("3. Listar Contactos")
         print("4. Cargar contacto")
         print("5. Buscar contacto")
-        print("6. Agregar otro número de teléfono a un mismo contacto")
+        print("6. Agregar numero de telefono")
         print("7. Crear grupo de contactos")
         print("8. Generar copia de seguridad")
         print("9. Saber si algún contacto cumple años")
@@ -21,16 +21,16 @@ class Vista:
         nombre = str(input("Ingrese el nombre"))
         apellido = str(input("Ingrese el apellido"))
         apodo = str(input("Ingrese el apodo"))
-        numero = int(input("Ingrese el numero"))
+        telefono = []
         correo = str(input("Ingrese el correo electrónico, incluyendo @"))
         cumple = str(input("Ingrese su fecha de cumpleaños"))
-        return Contacto(nombre, apellido, apodo, numero, correo, cumple)
+        return Contacto(nombre, apellido, apodo, telefono, correo, cumple)
 
     def contacto_creado_correctamente(self):
         print("Contacto creado de forma correcta")
 
     def nombre_de_carpeta(self):
-        return str(input("Digite el nombre del grupo de amigos o familiar que desea  "))
+        return str(input("Digite el nombre del archivo a donde quiere asignar su contacto "))
 
     def accion_correcta(self):
         print("Accion realizada correctamente")
@@ -41,6 +41,9 @@ class Vista:
     def buscar_contacto(self):
         return str(input("Digite el nombre del contacto que desea obtener  "))
 
+    def cumple_contacto(self):
+        return str(input("Digite el nombre de la persona que busca"))
+
     def imprimir_resultados(self, contactos):
         for contacto in contactos:
             print(contacto.exportar())
@@ -48,7 +51,6 @@ class Vista:
 
     def espera(self):
         input("Enter para continuar")
-
 
     def salir_programa(self):
         print("Hasta pronto, FIN DEL PROGRAMA")

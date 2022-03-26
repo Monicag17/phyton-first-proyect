@@ -6,15 +6,15 @@ class Contacto:
     nombre = ""
     apellido = ""
     apodo = ""
-    numero = ""
+    telefono = []
     correo = ""
     cumple = ""
 
-    def __init__(self, nombre, apellido, apodo, numero, correo, cumple):
+    def __init__(self, nombre, apellido, apodo, telefono, correo, cumple):
         self.nombre = nombre
         self.apellido = apellido
         self.apodo = apodo
-        self.numero = numero
+        self.telefono = []
         self.correo = correo
         self.cumple = cumple
 
@@ -28,7 +28,7 @@ class Contacto:
         return self.apodo
 
     def numero_contacto(self):
-        return self.numero
+        return self.telefono
 
     def correo_contacto(self):
         return self.correo
@@ -37,6 +37,14 @@ class Contacto:
         return self.cumple
 
     def exportar(self):
-        return {"nombre": self.nombre, "apellido": self.apellido,
-                "apodo": self.apodo, "numero": self.numero,
-                "correo": self.correo, "cumple": self.cumple}
+        return [{"nombre": self.nombre, "apellido": self.apellido,
+                "apodo": self.apodo, "numero": self.telefono,
+                "correo": self.correo, "cumple": self.cumple}]
+
+    def agregar_telefono(self):
+        numero_nuevo = int(input("Digite el el numero que desea agregar a su contacto  "))
+        self.telefono.append(numero_nuevo)
+
+
+
+
