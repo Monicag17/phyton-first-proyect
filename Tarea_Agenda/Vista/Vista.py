@@ -21,10 +21,26 @@ class Vista:
         nombre = str(input("Ingrese el nombre"))
         apellido = str(input("Ingrese el apellido"))
         apodo = str(input("Ingrese el apodo"))
-        telefono = []
+        telefono = self.agregar_telefonos()
         correo = str(input("Ingrese el correo electrónico, incluyendo @"))
         cumple = str(input("Ingrese su fecha de cumpleaños"))
         return Contacto(nombre, apellido, apodo, telefono, correo, cumple)
+
+    def agregar_telefonos(self):
+        telefonos = []
+        mostrar_menu = True
+        while mostrar_menu:
+            telefono = int(input('Ingrese numero de telefono'))
+            telefonos.append(telefono)
+            mostrar_menu = self.agregar_telefono_menu()
+        return telefonos
+        
+
+    def agregar_telefono_menu(self):
+        print('1. Agregar telefono')
+        print('2. No agregar mas numeros')
+        return int(input('Seleccione una opcion')) == 1
+    
 
     def contacto_creado_correctamente(self):
         print("Contacto creado de forma correcta")
