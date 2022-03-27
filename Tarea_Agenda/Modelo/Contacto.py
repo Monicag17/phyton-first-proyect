@@ -6,7 +6,7 @@ class Contacto:
     nombre = ""
     apellido = ""
     apodo = ""
-    telefono = []
+    telefono = ""
     correo = ""
     cumple = ""
 
@@ -14,7 +14,7 @@ class Contacto:
         self.nombre = nombre
         self.apellido = apellido
         self.apodo = apodo
-        self.telefono = []
+        self.telefono = telefono
         self.correo = correo
         self.cumple = cumple
 
@@ -41,9 +41,8 @@ class Contacto:
                 "apodo": self.apodo, "numero": self.telefono,
                 "correo": self.correo, "cumple": self.cumple}]
 
-    def agregar_telefono(self):
-        numero_nuevo = int(input("Digite el el numero que desea agregar a su contacto  "))
-        self.telefono.append(numero_nuevo)
+
+
 
 
 

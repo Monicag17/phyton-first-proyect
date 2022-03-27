@@ -1,4 +1,6 @@
 from Modelo.Contacto import Contacto
+from Modelo.GrupoContactos import GrupoContactos
+from datetime import datetime
 
 
 class Vista:
@@ -10,20 +12,18 @@ class Vista:
         print("3. Listar Contactos")
         print("4. Cargar contacto")
         print("5. Buscar contacto")
-        print("6. Agregar numero de telefono")
-        print("7. Crear grupo de contactos")
-        print("8. Generar copia de seguridad")
-        print("9. Saber si algún contacto cumple años")
-        print("10. Salir del programa")
+        print("6. Crear grupo de contactos")
+        print("7. Exportar grupo de contactos")
+        print("8. Salir del programa")
         return int(input("Ingrese la opción que desee    "))
 
     def datos_contacto(self):
         nombre = str(input("Ingrese el nombre"))
         apellido = str(input("Ingrese el apellido"))
         apodo = str(input("Ingrese el apodo"))
-        telefono = []
+        telefono = self.agregar_telefonos()
         correo = str(input("Ingrese el correo electrónico, incluyendo @"))
-        cumple = str(input("Ingrese su fecha de cumpleaños"))
+        cumple = self.cumpleanos()
         return Contacto(nombre, apellido, apodo, telefono, correo, cumple)
 
     def contacto_creado_correctamente(self):
@@ -51,6 +51,45 @@ class Vista:
 
     def espera(self):
         input("Enter para continuar")
+
+    def agregar_telefonos(self):
+        telefonos = []
+        mostrar_menu = True
+        while mostrar_menu:
+            telefono = int(input('Ingrese numero de telefono'))
+            telefonos.append(telefono)
+            mostrar_menu = self.agregar_telefono_menu()
+        return telefonos
+
+    def agregar_telefono_menu(self):
+        print('1. Agregar telefono')
+        print('2. No agregar mas numeros')
+        return int(input('Seleccione una opcion')) == 1
+
+    def grupos(self):
+        nombre_grupo = str(input("Por favor dijite el nombre del grupo"))
+        lista_personas = self.listar_grupo
+        return GrupoContactos(nombre_grupo, lista_personas)
+
+    def listar_grupo(self):
+        grupito = []
+        mostrar_menu1 = True
+        while mostrar_menu1:
+            persona = self.datos_contacto()
+            grupito.append(persona)
+            mostrar_menu1 = self.agregarpersona_menu()
+        return grupito
+
+    def agregarpersona_menu(self):
+        print('1. Agregar contacto')
+        print('2. No agregar mas contactos al grupo')
+        return int(input('Seleccione una opcion')) == 1
+
+    def cumpleanos(self):
+        cumple = input('\n Ingrese fecha de cumpleaños "dd/mm/aaaa"...: ')
+        fecha_cumpleanos = datetime.strptime(cumple, '%d/%m/%Y').strftime('%d-%m-%Y')
+        print(str(fecha_cumpleanos))
+
 
     def salir_programa(self):
         print("Hasta pronto, FIN DEL PROGRAMA")

@@ -1,7 +1,8 @@
 from Modelo.Contacto import Contacto
 import json
 from Vista.Vista import Vista
-from datetime import date
+from Modelo.GrupoContactos import GrupoContactos
+
 
 
 class Controlador:
@@ -12,9 +13,11 @@ class Controlador:
         self.vista = Vista()
         self.contactos = []
         self.telefono = []
+        self.lista_grupo = []
+
 
     def opciones(self):
-        while self.opcion_seleccionada != 10:
+        while self.opcion_seleccionada != 8:
             self.opcion_seleccionada = self.vista.seleccion_menu()
 
             if self.opcion_seleccionada == 1:
@@ -33,27 +36,18 @@ class Controlador:
                 self.buscar_contacto()
 
             if self.opcion_seleccionada == 6:
-                self.agregar_numero()
-
-            if self.opcion_seleccionada == 7:
                 self.crear_grupo()
 
+            if self.opcion_seleccionada == 7:
+                self.exportar_grupo()
+
             if self.opcion_seleccionada == 8:
-                self.generar_copiaseguridad()
-
-            if self.opcion_seleccionada == 9:
-                self.cumple_contactos()
-
-            if self.opcion_seleccionada == 10:
                 self.salir_del_programa()
 
     def agregar_contacto(self):
         contacto_nuevo = self.vista.datos_contacto()
         self.contactos.append(contacto_nuevo)
         self.vista.contacto_creado_correctamente()
-
-    def agregar_numero(self):
-        pass
 
     def exportar_contacto(self):
         nombre_carpeta = self.vista.nombre_de_carpeta()
@@ -81,7 +75,7 @@ class Controlador:
                         nombre=contacto_nuevo["nombre"],
                         apellido=contacto_nuevo["apellido"],
                         apodo=contacto_nuevo["apodo"],
-                        numero=contacto_nuevo["numero"],
+                        telefono=contacto_nuevo["telefono"],
                         correo=contacto_nuevo["correo"],
                         cumple=contacto_nuevo["cumple"]
                     )
@@ -99,13 +93,24 @@ class Controlador:
                 break
         self.vista.imprimir_resultados(resultados)
 
-
     def crear_grupo(self):
-       pass
+        grupo_nuevo = self.vista.grupos()
+        self.lista_grupo.append(grupo_nuevo)
+        self.vista.accion_correcta()
 
-    def generar_copiaseguridad(self):
+    def exportar_grupo(self):
+        nombre_carpeta = self.vista.nombre_de_carpeta()
+        grupo_exportacion = []
+        for grupo_nuevo in self.lista_grupo:
+            grupo_exportacion.append(nombre_carpeta.exportar1())
+
+        with open(f"datos/{nombre_carpeta}.json", "w") as fp:
+            json.dump(grupo_exportacion, fp)
+
+        self.vista.accion_correcta()
+
+    def cumple_contactos(self):
         pass
-
 
     def salir_del_programa(self):
         self.vista.salir_programa()
